@@ -12,8 +12,8 @@ namespace TheMovieDB.Core.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string PlaceOfBirth { get; set; }
-        public DateOnly DOB { get; set; }
-        public DateOnly DateOfDeath { get; set; }
+        public DateOnly? DOB { get; set; }
+        public DateOnly? DateOfDeath { get; set; }
         public Gender Gender { get; set; }
     }
 }

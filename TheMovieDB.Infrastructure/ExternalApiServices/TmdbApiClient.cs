@@ -16,7 +16,6 @@ namespace TheMovieDB.Infrastructure.ExternalApiServices
     public class TmdbApiClient
     {
         private readonly HttpClient _httpClient;
-       
 
         public TmdbApiClient(HttpClient httpClient, TmdbApiSettings settings)
         {
@@ -24,7 +23,6 @@ namespace TheMovieDB.Infrastructure.ExternalApiServices
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", settings.AccessToken);
            
         }
-
 
 
         //generic method to get data from TMDB api endpoints
@@ -43,24 +41,24 @@ namespace TheMovieDB.Infrastructure.ExternalApiServices
         }
 
         // get 1 page (20 movies) from api by page number
-        public async Task<MovieTopResponseDto> GetPopularMoviesPageAsync(int page)
+        public async Task<MovieDtoWrapper> GetPopularMoviesPageAsync(int page)
         {
             string url = $"https://api.themoviedb.org/3/movie/popular?page={page}";
-            return await GetTmdbApiDataAsync<MovieTopResponseDto>(url);
+            return await GetTmdbApiDataAsync<MovieDtoWrapper>(url);
         }
 
         // get credits (cast and crew) for a movie by id
-        public async Task<MovieCreditsDto> GetMovieCreditsAsync(int movieId)
+        public async Task<MovieCreditsWrapper> GetMovieCreditsAsync(int movieId)
         {
             string url = $"https://api.themoviedb.org/3/movie/{movieId}/credits";
-            return await GetTmdbApiDataAsync<MovieCreditsDto>(url);
+            return await GetTmdbApiDataAsync<MovieCreditsWrapper>(url);
         }
 
       
-        public async Task<MovieGenreDto> GetGenres()
+        public async Task<GenreWrapper> GetGenresAsync()
         {
             string url = "https://api.themoviedb.org/3/genre/movie/list";
-            return await GetTmdbApiDataAsync<MovieGenreDto>(url);
+            return await GetTmdbApiDataAsync<GenreWrapper>(url);
         }
 
         
@@ -71,10 +69,10 @@ namespace TheMovieDB.Infrastructure.ExternalApiServices
         }
 
        
-        public async Task<PersonCreditsDto> GetPersonMovieCredits(int personId)
+        public async Task<PersonCreditsWrapper> GetPersonMovieCreditsAsync(int personId)
         {
             string url = $"https://api.themoviedb.org/3/person/{personId}/movie_credits";
-            return await GetTmdbApiDataAsync<PersonCreditsDto>(url);
+            return await GetTmdbApiDataAsync<PersonCreditsWrapper>(url);
         }
   
     }

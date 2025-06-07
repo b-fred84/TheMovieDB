@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TheMovieDB.Infrastructure.ExternalApiServices.Dtos
 {
-    public class MovieCrewDto
+    public class MovieCredCrewDto
     {
         //only crew member needed for DB spec is director, can ignore all others
         // from endpoint https://api.themoviedb.org/3/movie/{movie_id}/credits

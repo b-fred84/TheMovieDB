@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace TheMovieDB.Infrastructure.ExternalApiServices.Dtos
 {
-    public class GenreListDto
+    public class GenreWrapper
     {
-        public List<MovieGenreDto> MovieGenres { get; set; }
+        public List<GenreDto> Genres { get; set; }
 
     }
 }

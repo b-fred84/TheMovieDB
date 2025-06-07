@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TheMovieDB.Infrastructure.ExternalApiServices.Dtos
 {
-    public class MovieCastDto
+    public class MovieCredCastDto
     {
         // from endpoint https://api.themoviedb.org/3/movie/{movie_id}/credits
 

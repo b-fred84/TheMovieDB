@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ExternalApiServices\Mapping\" />
+    <ProjectReference Include="..\TheMovieDB.Core\TheMovieDB.Core.csproj" />
   </ItemGroup>
 
 </Project>

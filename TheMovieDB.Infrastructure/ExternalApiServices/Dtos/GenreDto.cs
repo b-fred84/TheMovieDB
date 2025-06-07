@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TheMovieDB.Infrastructure.ExternalApiServices.Dtos
 {
-    public class MovieGenreDto
+    public class GenreDto
     {
         //from endpoint https://api.themoviedb.org/3/genre/movie/list
 

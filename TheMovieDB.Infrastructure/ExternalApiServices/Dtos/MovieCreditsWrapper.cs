@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TheMovieDB.Infrastructure.ExternalApiServices.Dtos
 {
-    public class MovieCreditsDto
+    public class MovieCreditsWrapper
     {
 
         // from endpoint https://api.themoviedb.org/3/movie/{movie_id}/credits
@@ -17,9 +17,9 @@ namespace TheMovieDB.Infrastructure.ExternalApiServices.Dtos
         public int Id { get; set; }
 
         [JsonProperty("cast")] // List of cast members
-        public List<MovieCastDto> Cast { get; set; }
+        public List<MovieCredCastDto> Cast { get; set; }
 
         [JsonProperty("crew")] // List of crew members (optional in your example)
-        public List<MovieCrewDto> Crew { get; set; }
+        public List<MovieCredCrewDto> Crew { get; set; }
     }
 }

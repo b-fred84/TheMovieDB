@@ -28,6 +28,7 @@ namespace TheMovieDB.Infrastructure.ExternalApiServices.Dtos
 
         //if using this endpoint these should be only props needed (and maybe just Id depending on structure)
 
+
         [JsonProperty("id")]                 // Unique identifier for the movie/show
         public int Id { get; set; }
 
