@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace TheMovieDB.Core.Models
 {
-    public class MovieActor
+    public class MovieGenre
     {
         public int MovieId { get; set; }
-        public int PersonId { get; set; }
+        public int GenreId { get; set; }
         public Movie Movie { get; set; }
-        public Person Person { get; set; }
+        public Genre Genre { get; set; }
     }
 }

@@ -15,5 +15,8 @@ namespace TheMovieDB.Core.Models
         public DateOnly? DOB { get; set; }
         public DateOnly? DateOfDeath { get; set; }
         public Gender Gender { get; set; }
+
+        public ICollection<MovieActor> MovieActors { get; set; }
+        public ICollection<MovieDirector> MovieDirectors { get; set; }
     }
 }

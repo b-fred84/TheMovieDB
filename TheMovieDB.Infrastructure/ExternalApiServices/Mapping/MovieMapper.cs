@@ -38,8 +38,8 @@ namespace TheMovieDB.Infrastructure.ExternalApiServices.Mapping
                 ReleaseDate = releaseDate,
                 Popularity = movieDto.Popularity,
                 VoteCount = movieDto.VoteCount,
-                AverageRating = movieDto.VoteAverage,
-                GenreIds = movieDto.GenreIds,
+                AverageRating = movieDto.VoteAverage
+                
 
             };
 
@@ -80,7 +80,7 @@ namespace TheMovieDB.Infrastructure.ExternalApiServices.Mapping
                 PlaceOfBirth = personDto.PlaceOfBirth,
                 DOB = dateOfBirth,
                 DateOfDeath = dateOfDeath,
-                Gender = (Gender)personDto.Gender,
+                Gender = (Gender)personDto.Gender
 
             };
         }

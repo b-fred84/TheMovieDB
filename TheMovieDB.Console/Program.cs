@@ -1,6 +1,8 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TheMovieDB.Infrastructure.Data;
 using TheMovieDB.Infrastructure.ExternalApiServices;
 using TheMovieDB.Infrastructure.ExternalApiServices.Settings;
 
@@ -9,11 +11,30 @@ var config = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .Build();
 
+//set up services DI
+var services = new ServiceCollection();
 
+
+services.AddDbContext<TheMovieDbContext>(options =>
+options.UseSqlServer(config.GetConnectionString("TheMovieDbConnection")));
 
 var tmdbSettings = config.GetSection("TmdbApi").Get<TmdbApiSettings>();
+services.AddSingleton(tmdbSettings);
 
-var apiClient = new TmdbApiClient(new HttpClient(), tmdbSettings);
+services.AddSingleton<IConfiguration>(config);
+services.AddScoped<TmdbApiClient>();
+
+
+//var apiClient = new TmdbApiClient(new HttpClient(), tmdbSettings);
+
+var serviceProvider = services.BuildServiceProvider();
+
+using (var scope = serviceProvider.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<TheMovieDbContext>();
+    var tmdbApiClient = scope.ServiceProvider.GetRequiredService<TmdbApiClient>();
+
+}
 
 
 
