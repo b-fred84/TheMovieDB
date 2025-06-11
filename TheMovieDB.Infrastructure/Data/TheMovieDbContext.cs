@@ -22,7 +22,7 @@ namespace TheMovieDB.Infrastructure.Data
         public DbSet<Genre> Genres { get; set; }
         public DbSet<MovieActor> MovieActors { get; set; }
         public DbSet<MovieDirector> MovieDirectors { get; set; }
-        public DbSet<MovieGenre> MoviesGenres { get; set; }
+        public DbSet<MovieGenre> MovieGenres { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

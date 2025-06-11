@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TheMovieDB.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using TheMovieDB.Infrastructure.Data;
 namespace TheMovieDB.Infrastructure.Migrations
 {
     [DbContext(typeof(TheMovieDbContext))]
-    partial class TheMovieDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250611134812_RenameMovieGenresTable")]
+    partial class RenameMovieGenresTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -118,13 +121,15 @@ namespace TheMovieDB.Infrastructure.Migrations
                     b.Property<DateOnly?>("DateOfDeath")
                         .HasColumnType("date");
 
-                    b.Property<int?>("Gender")
+                    b.Property<int>("Gender")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PlaceOfBirth")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

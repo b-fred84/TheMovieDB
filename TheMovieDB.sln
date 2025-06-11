@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheMovieDB.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheMovieDB.Console", "TheMovieDB.Console\TheMovieDB.Console.csproj", "{B3576FDA-B6B7-4DB4-B785-F9EE78E2E36D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheMovieDB.Application", "TheMovieDB.Application\TheMovieDB.Application.csproj", "{ACD72FE2-93BB-4918-9D2B-C285CE99C441}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B3576FDA-B6B7-4DB4-B785-F9EE78E2E36D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3576FDA-B6B7-4DB4-B785-F9EE78E2E36D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3576FDA-B6B7-4DB4-B785-F9EE78E2E36D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACD72FE2-93BB-4918-9D2B-C285CE99C441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACD72FE2-93BB-4918-9D2B-C285CE99C441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACD72FE2-93BB-4918-9D2B-C285CE99C441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACD72FE2-93BB-4918-9D2B-C285CE99C441}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

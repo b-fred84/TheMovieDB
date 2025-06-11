@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TheMovieDB.Core\TheMovieDB.Core.csproj" />
+    <ProjectReference Include="..\TheMovieDB.Infrastructure\TheMovieDB.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
