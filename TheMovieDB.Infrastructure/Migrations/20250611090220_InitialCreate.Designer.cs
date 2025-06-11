@@ -12,7 +12,7 @@ using TheMovieDB.Infrastructure.Data;
 namespace TheMovieDB.Infrastructure.Migrations
 {
     [DbContext(typeof(TheMovieDbContext))]
-    [Migration("20250610210600_InitialCreate")]
+    [Migration("20250611090220_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -28,10 +28,7 @@ namespace TheMovieDB.Infrastructure.Migrations
             modelBuilder.Entity("TheMovieDB.Core.Models.Genre", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -45,10 +42,7 @@ namespace TheMovieDB.Infrastructure.Migrations
             modelBuilder.Entity("TheMovieDB.Core.Models.Movie", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<double>("AverageRating")
                         .HasColumnType("float");
@@ -119,10 +113,7 @@ namespace TheMovieDB.Infrastructure.Migrations
             modelBuilder.Entity("TheMovieDB.Core.Models.Person", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateOnly?>("DOB")
                         .HasColumnType("date");

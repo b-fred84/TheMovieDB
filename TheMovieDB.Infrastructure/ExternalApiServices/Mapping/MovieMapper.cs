@@ -111,5 +111,14 @@ namespace TheMovieDB.Infrastructure.ExternalApiServices.Mapping
                 PersonId = personId
             };
         }
+
+        public static MovieGenre MapTo_MovieGenre(int movieId, int genreId)
+        {
+            return new MovieGenre
+            {
+                MovieId = movieId,
+                GenreId = genreId
+            };
+        }
     }
 }

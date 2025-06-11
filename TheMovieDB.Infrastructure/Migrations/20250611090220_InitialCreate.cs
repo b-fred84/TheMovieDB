@@ -15,8 +15,7 @@ namespace TheMovieDB.Infrastructure.Migrations
                 name: "Genres",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -28,8 +27,7 @@ namespace TheMovieDB.Infrastructure.Migrations
                 name: "Movies",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReleaseDate = table.Column<DateOnly>(type: "date", nullable: true),
                     Popularity = table.Column<double>(type: "float", nullable: false),
@@ -45,8 +43,7 @@ namespace TheMovieDB.Infrastructure.Migrations
                 name: "People",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PlaceOfBirth = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DOB = table.Column<DateOnly>(type: "date", nullable: true),

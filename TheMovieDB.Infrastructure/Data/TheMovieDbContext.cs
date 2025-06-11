@@ -32,6 +32,16 @@ namespace TheMovieDB.Infrastructure.Data
             modelBuilder.Entity<MovieDirector>().HasKey(md => new { md.MovieId, md.PersonId });
 
             modelBuilder.Entity<MovieGenre>().HasKey(mg => new { mg.MovieId, mg.GenreId});
+
+            modelBuilder.Entity<Movie>().HasKey(m => m.Id);
+            modelBuilder.Entity<Movie>().Property(m => m.Id).ValueGeneratedNever();
+
+            modelBuilder.Entity<Genre>().HasKey(g => g.Id);
+            modelBuilder.Entity<Genre>().Property(g=> g.Id).ValueGeneratedNever();  
+
+            modelBuilder.Entity<Person>().HasKey(p => p.Id);
+            modelBuilder.Entity<Person>().Property(p => p.Id).ValueGeneratedNever();
+
         }
     }
 }
