@@ -83,30 +83,54 @@ namespace TheMovieDB.Application.TmdbImportServices
                 foreach (var movieDto in movieWrapper.Movies)
                 {
                     //added for checking bug - remove when fixed
-                    if (movieDto == null)
+
+
+                    if (movieDto.GenreIds != null && movieDto.GenreIds.Any())
                     {
-                        Console.WriteLine("movieDto is null");
-                        continue;
+                        Console.WriteLine($"{movieDto.Id}");
+
                     }
 
                     try
                     {
-                        if (!_dbContext.Movies.Any(m => m.Id == movieDto.Id))
+                        var movie = await _dbContext.Movies.Include(m => m.MovieGenres).FirstOrDefaultAsync(m => m.Id == movieDto.Id);
+
+
+
+                        if (movie == null)
                         {
-                            Movie movie = MovieMapper.MapTo_Movie(movieDto);
+                            movie = MovieMapper.MapTo_Movie(movieDto);
 
                             if (movieDto.GenreIds != null)
                             {
                                 foreach (var genreId in movieDto.GenreIds)
                                 {
-                                    if (!_dbContext.MovieGenres.Any(mg => mg.GenreId == genreId))
+                                    if (!movie.MovieGenres.Any(mg => mg.GenreId == genreId))
                                     {
                                         movie.MovieGenres.Add(MovieMapper.MapTo_MovieGenre(movie.Id, genreId));
                                     }
+
+
                                 }
                             }
 
                             await _dbContext.Movies.AddAsync(movie);
+                          
+                        }
+                        else
+                        {
+                            if (movieDto.GenreIds != null)
+                            {
+                              
+                                foreach (var genreId in movieDto.GenreIds)
+                                {
+                                    if (!movie.MovieGenres.Any(mg => mg.GenreId == genreId))
+                                    {
+                                        movie.MovieGenres.Add(MovieMapper.MapTo_MovieGenre(movie.Id, genreId));
+                                    }
+                                }
+                               
+                            }
                         }
                     }
                     catch (Exception ex)

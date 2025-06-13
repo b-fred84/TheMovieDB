@@ -42,16 +42,11 @@ await importer.ImportGenresAsync();
 
 await importer.ImportMultipleMoviePagesAsync(totalPages: 50);
 
-await importer.ImportAllMovieCreditsAsync();
+//await importer.ImportAllMovieCreditsAsync();
 
-await importer.ImportAllPeopleAsync();
+//await importer.ImportAllPeopleAsync();
 
-//using (var scope = serviceProvider.CreateScope())
-//{
-//    var db = scope.ServiceProvider.GetRequiredService<TheMovieDbContext>();
-//    var tmdbApiClient = scope.ServiceProvider.GetRequiredService<TmdbApiClient>();
 
-//}
 
 
 
