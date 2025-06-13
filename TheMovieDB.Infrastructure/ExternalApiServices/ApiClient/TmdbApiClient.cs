@@ -11,9 +11,9 @@ using static System.Net.WebRequestMethods;
 
 
 
-namespace TheMovieDB.Infrastructure.ExternalApiServices
+namespace TheMovieDB.Infrastructure.ExternalApiServices.ApiClient
 {
-    public class TmdbApiClient
+    public class TmdbApiClient : ITmdbApiClient
     {
         private readonly HttpClient _httpClient;
 
@@ -21,7 +21,7 @@ namespace TheMovieDB.Infrastructure.ExternalApiServices
         {
             _httpClient = httpClient;
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", settings.AccessToken);
-           
+
         }
 
 
@@ -54,26 +54,26 @@ namespace TheMovieDB.Infrastructure.ExternalApiServices
             return await GetTmdbApiDataAsync<MovieCreditsWrapper>(url);
         }
 
-      
+
         public async Task<GenreWrapper> GetGenresAsync()
         {
             string url = "https://api.themoviedb.org/3/genre/movie/list";
             return await GetTmdbApiDataAsync<GenreWrapper>(url);
         }
 
-        
+
         public async Task<PersonDto> GetPersonAsync(int personId)
         {
             string url = $"https://api.themoviedb.org/3/person/{personId}";
             return await GetTmdbApiDataAsync<PersonDto>(url);
         }
 
-       
+
         public async Task<PersonCreditsWrapper> GetPersonMovieCreditsAsync(int personId)
         {
             string url = $"https://api.themoviedb.org/3/person/{personId}/movie_credits";
             return await GetTmdbApiDataAsync<PersonCreditsWrapper>(url);
         }
-  
+
     }
 }

@@ -2,9 +2,11 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TheMovieDB.Application.TmdbImportServices;
 using TheMovieDB.Infrastructure.Data;
-using TheMovieDB.Infrastructure.ExternalApiServices;
+using TheMovieDB.Infrastructure.ExternalApiServices.ApiClient;
 using TheMovieDB.Infrastructure.ExternalApiServices.Settings;
+
 
 
 var config = new ConfigurationBuilder()
@@ -18,23 +20,38 @@ var services = new ServiceCollection();
 services.AddDbContext<TheMovieDbContext>(options =>
 options.UseSqlServer(config.GetConnectionString("TheMovieDbConnection")));
 
+services.AddSingleton<IConfiguration>(config);
+
 var tmdbSettings = config.GetSection("TmdbApi").Get<TmdbApiSettings>();
 services.AddSingleton(tmdbSettings);
 
-services.AddSingleton<IConfiguration>(config);
-services.AddScoped<TmdbApiClient>();
+
+services.AddHttpClient<ITmdbApiClient, TmdbApiClient>();
+services.AddScoped<ITmdbDataImporter,TmdbDataImporter>();
 
 
 //var apiClient = new TmdbApiClient(new HttpClient(), tmdbSettings);
 
 var serviceProvider = services.BuildServiceProvider();
 
-using (var scope = serviceProvider.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<TheMovieDbContext>();
-    var tmdbApiClient = scope.ServiceProvider.GetRequiredService<TmdbApiClient>();
+using var scope = serviceProvider.CreateScope();
 
-}
+var importer = scope.ServiceProvider.GetRequiredService<ITmdbDataImporter>();
+
+await importer.ImportGenresAsync();
+
+await importer.ImportMultipleMoviePagesAsync(totalPages: 50);
+
+await importer.ImportAllMovieCreditsAsync();
+
+await importer.ImportAllPeopleAsync();
+
+//using (var scope = serviceProvider.CreateScope())
+//{
+//    var db = scope.ServiceProvider.GetRequiredService<TheMovieDbContext>();
+//    var tmdbApiClient = scope.ServiceProvider.GetRequiredService<TmdbApiClient>();
+
+//}
 
 
 

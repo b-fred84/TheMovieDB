@@ -38,7 +38,8 @@ namespace TheMovieDB.Infrastructure.ExternalApiServices.Mapping
                 ReleaseDate = releaseDate,
                 Popularity = movieDto.Popularity,
                 VoteCount = movieDto.VoteCount,
-                AverageRating = movieDto.VoteAverage
+                AverageRating = movieDto.VoteAverage,
+                MovieGenres = new List<MovieGenre>()
                 
 
             };
